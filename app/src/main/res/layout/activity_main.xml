@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -14,17 +16,17 @@
         android:ems="10"
         android:hint="@string/description"
         android:inputType="textPersonName"
-        android:textColorHint="@color/black"/>
+        android:textColorHint="@color/black" />
 
     <Button
         android:id="@+id/btTakePicture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:backgroundTint="@color/black"
         android:hint="@string/takePicture"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textColorLink="#FFFFFF" />
+        android:textColorLink="#FFFFFF"
+        app:backgroundTint="@color/black" />
 
     <ImageView
         android:id="@+id/ivImage"
@@ -39,6 +41,15 @@
         android:hint="@string/submit"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:backgroundTint="@color/black"
-        />
+        app:backgroundTint="@color/black" />
+
+    <Button
+        android:id="@+id/btLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:backgroundTint="#FB3838"
+        android:hint="@string/logout"
+        android:textColor="@color/white"
+        android:textColorHint="#FAF6F6" />
 </LinearLayout>

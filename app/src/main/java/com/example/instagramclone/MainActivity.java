@@ -36,18 +36,33 @@ public class MainActivity extends AppCompatActivity {
     private Button btSubmit;
     private File photoFile;
     private ImageView ivImage;
+    private Button btLogout;
     public String photoFileName = "photo.jpg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.nav_logo_whiteout);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
         etDescription = findViewById(R.id.etDescription);
         btTakePicture = findViewById(R.id.btTakePicture);
         btSubmit = findViewById(R.id.btSubmit);
         ivImage = findViewById(R.id.ivImage);
-        //queryPosts();
+        btLogout = findViewById(R.id.btLogout);
+        queryPosts();
+        
+        btLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseUser.logOut();
+                ParseUser currentUser = ParseUser.getCurrentUser();
+                if(currentUser == null)
+                    goLoginActivity();
+            }
+        });
+        
         btTakePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +86,12 @@ public class MainActivity extends AppCompatActivity {
                 savePost(description, currentUser, photoFile);
             }
         });
+    }
+
+    private void goLoginActivity() {
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+        finish();
     }
 
     private void launchCamera() {
