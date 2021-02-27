@@ -28,7 +28,9 @@ public class LoginActivity extends AppCompatActivity {
         if(ParseUser.getCurrentUser() != null){
             goToMainActivity();
         }
-
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.nav_logo_whiteout);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
         etUsername = findViewById(R.id.etUserName);
         etPassword = findViewById(R.id.etPassword);
         btLogin = findViewById(R.id.btLogin);

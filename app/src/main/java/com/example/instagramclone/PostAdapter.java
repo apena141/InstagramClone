@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.parse.ParseFile;
 
 import java.util.List;
@@ -60,7 +61,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             tvCaption.setText(post.getDescription());
             ParseFile image = post.getImage();
             if(image != null) {
-                Glide.with(context).load(image.getUrl()).into(ivImage);
+                Glide.with(context)
+                        .load(image.getUrl())
+                        .into(ivImage);
             }
         }
     }

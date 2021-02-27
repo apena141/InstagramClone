@@ -43,6 +43,7 @@
         <activity
             android:name=".MainActivity"
             android:label=""
+            android:icon="@drawable/nav_logo_whiteout"
             >
         </activity>
     </application>
