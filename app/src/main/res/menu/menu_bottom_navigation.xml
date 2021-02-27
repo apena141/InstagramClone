@@ -4,17 +4,18 @@
 
     <item
         android:id="@+id/action_home"
-        android:icon="@drawable/instagram_home_outline_24"
         android:title="@string/Home"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        android:icon="@drawable/home_button"
+        />
     <item
         android:id="@+id/action_compose"
-        android:icon="@drawable/instagram_new_post_outline_24"
+        android:icon="@drawable/compose_button"
         android:title="@string/Compose"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_profile"
-        android:icon="@drawable/instagram_user_outline_24"
+        android:icon="@drawable/profile_button"
         android:title="@string/Profile"
         app:showAsAction="always" />
 </menu>

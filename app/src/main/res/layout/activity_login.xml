@@ -34,11 +34,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/etPassword"
-        android:background="#000000"
+        android:layout_marginTop="5dp"
         android:text="@string/login"
-        android:textColor="#FFFFFF"
-        android:textColorHighlight="#000000"
-        android:textColorLink="#1E1E1E"
-        app:iconTint="#000000" />
+        android:backgroundTint="#00cf29"
+        android:textColor="@color/white"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:backgroundTint="#00aee3"
+        android:text="Sign Up"
+        android:textColor="@color/white" />
 
 </LinearLayout>
