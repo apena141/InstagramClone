@@ -97,6 +97,8 @@ public class ComposeFragment extends Fragment {
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 savePost(description, currentUser, photoFile);
+                Toast.makeText(getContext(), "Your picture has been posted!", Toast.LENGTH_LONG).show();
+
             }
         });
     }
