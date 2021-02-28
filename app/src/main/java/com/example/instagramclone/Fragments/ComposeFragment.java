@@ -46,7 +46,6 @@ public class ComposeFragment extends Fragment {
     private Button btSubmit;
     private File photoFile;
     private ImageView ivImage;
-    private Button btLogout;
     public String photoFileName = "photo.jpg";
 
 
@@ -64,17 +63,6 @@ public class ComposeFragment extends Fragment {
         btTakePicture = view.findViewById(R.id.btTakePicture);
         btSubmit = view.findViewById(R.id.btSubmit);
         ivImage = view.findViewById(R.id.ivImage);
-        btLogout = view.findViewById(R.id.btLogout);
-
-        btLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ParseUser.logOut();
-                ParseUser currentUser = ParseUser.getCurrentUser();
-                if(currentUser == null)
-                    goLoginActivity();
-            }
-        });
 
         btTakePicture.setOnClickListener(new View.OnClickListener() {
             @Override
