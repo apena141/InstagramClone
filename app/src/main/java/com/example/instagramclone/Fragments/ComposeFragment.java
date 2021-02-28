@@ -158,11 +158,4 @@ public class ComposeFragment extends Fragment {
             }
         });
     }
-
-
-    private void goLoginActivity() {
-        Intent i = new Intent(getContext(), LoginActivity.class);
-        startActivity(i);
-    }
-
 }
