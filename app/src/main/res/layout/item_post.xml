@@ -7,27 +7,109 @@
     android:layout_margin="8dp"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvUsername"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        tools:text="testUser28" />
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            tools:srcCompat="@tools:sample/avatars"
+            app:border_color="@color/black"/>
+
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="7dp"
+            android:layout_toEndOf="@+id/ivProfile"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="18sp"
+            tools:text="testUser28" />
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/ivPost"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:layout_marginTop="5dp"
         android:layout_weight="1"
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/tvCaption"
+    <RelativeLayout
+        android:id="@+id/rlButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_weight="1"
-        tools:text="Test Caption!" />
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/ivLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="7dp"
+            android:scaleType="centerInside" />
+
+        <ImageButton
+            android:id="@+id/ivComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="7dp"
+            android:layout_toEndOf="@+id/ivLike"
+            />
+
+        <ImageButton
+            android:id="@+id/ivDirect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="7dp"
+            android:layout_toEndOf="@+id/ivComment"
+            />
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tvCaption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="4dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvUser2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvUser2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="4dp"
+            android:text="TextView"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </LinearLayout>

@@ -41,11 +41,12 @@
         />
 
     <Button
+        android:id="@+id/btSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:backgroundTint="#00aee3"
-        android:text="Sign Up"
+        android:text="@string/signup"
         android:textColor="@color/white" />
 
 </LinearLayout>
