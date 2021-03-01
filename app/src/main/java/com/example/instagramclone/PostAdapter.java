@@ -1,7 +1,6 @@
 package com.example.instagramclone;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
-import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -44,16 +42,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.bind(post);
     }
 
-    public void clearAll(){
-        posts.clear();
-        notifyDataSetChanged();
-    }
-
-    public void addAll(List<Post> postList){
-        posts.addAll(postList);
-        notifyDataSetChanged();
-    }
-
     @Override
     public int getItemCount() {
         return posts.size();
@@ -68,6 +56,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         private ImageButton ivDirect;
         private TextView tvUser2;
         private CircleImageView ivProfilePic;
+        private TextView tvCreatedDate;
 
 
         public ViewHolder(@NonNull View itemView){
@@ -80,11 +69,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             ivDirect = itemView.findViewById(R.id.ivDirect);
             tvUser2 = itemView.findViewById(R.id.tvUser2);
             ivProfilePic = itemView.findViewById(R.id.ivProfile);
+            tvCreatedDate = itemView.findViewById(R.id.tvCreatedDate);
         }
 
         public void bind(Post post){
             tvUser.setText(post.getUser().getUsername());
             tvCaption.setText(post.getDescription());
+            String time = post.getCreatedAt().toString();
+            time = getFormattedTime(time) + " ago";
+            tvCreatedDate.setText(time);
             ParseFile profile = post.getUser().getParseFile("profilePic");
             if(profile != null){
                 Glide.with(context)
@@ -119,6 +112,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             ivComment.setBackgroundResource(R.drawable.ufi_comment);
             ivDirect.setBackgroundResource(R.drawable.direct);
             tvUser2.setText(tvUser.getText());
+        }
+
+        public String getFormattedTime(String time){
+            //import com.codepath.apps.restclienttemplate.TimeFormatter;
+            return com.codepath.apps.restclienttemplate.TimeFormatter.getTimeDifference(time);
         }
     }
 }
