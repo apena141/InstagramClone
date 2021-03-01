@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView rvPosts;
     protected PostAdapter adapter;
     protected List<Post> posts;
+    protected SwipeRefreshLayout swipeContainer;
 
     public HomeFragment(){
 
@@ -51,8 +53,23 @@ public class HomeFragment extends Fragment {
         rvPosts.setAdapter(adapter);
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
         rvPosts.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Log.i(TAG, "Called Queryposts");
+                queryPosts();
+                Log.i(TAG, "Finished queryposts");
+            }
+        });
+
         queryPosts();
     }
+
 
     protected void queryPosts(){
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
@@ -68,6 +85,7 @@ public class HomeFragment extends Fragment {
                 for(Post post: objects){
                     Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
                 }
+                posts.clear();
                 posts.addAll(objects);
                 adapter.notifyDataSetChanged();
             }

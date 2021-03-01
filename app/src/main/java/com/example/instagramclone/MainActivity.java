@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.logoutItem:
                 goLoginActivity();
                 break;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private void goLoginActivity() {
         ParseUser.logOut();
         ParseUser currentUser = ParseUser.getCurrentUser();
-        if(currentUser == null){
+        if (currentUser == null) {
             Intent i = new Intent(this, LoginActivity.class);
             startActivity(i);
         }
